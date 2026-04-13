@@ -41,3 +41,12 @@ Predict whether a 311 complaint will be resolved within 3 days based on complain
 - Fit baseline logistic regression
 - Evaluate using precision, recall, and F1 due to class imbalance
 - Evaluate and interpret results
+## Comparison with SageMaker models
+
+I ran the SageMaker Linear Learner notebook for a binary classification task predicting whether NYC 311 complaints are resolved within 3 days. The model used the dataset stored in S3 (resolution_speed_modeling.csv) and followed a managed training workflow in SageMaker.
+
+The key metrics observed were accuracy, precision, and recall, all of which were around 0.80, indicating solid overall performance on this dataset.
+
+Compared to my sklearn logistic regression model from Day 27, the results were very similar, with no major improvement in performance.
+
+The SageMaker workflow is not strictly necessary for this problem since the dataset is manageable locally, but it would be useful for larger datasets or production environments where scalability and automated training pipelines are important.
