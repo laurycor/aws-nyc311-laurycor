@@ -1,49 +1,35 @@
-# NYC 311 Service Request Analysis Project
+# AWS Cloud Computing Project (NYC 311 Data)
 
-## Project Description
-This project analyzes NYC 311 service request data to identify patterns in complaint types, agencies, and geographic distribution. The goal is to explore trends in service requests and support data-driven insights using cloud-based tools such as Amazon S3 and Athena.
+## Overview
+This project demonstrates a cloud-based data analysis workflow using AWS services. The goal was to process and analyze NYC 311 complaint data using scalable cloud tools and build a dataset suitable for modeling.
 
-## Data Source and Provenance
-- **Source**: https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2020-to-Present/erm2-nwe9/
-- **Time period**: Jan 29–Mar 21, 2026 (Q1 2026)
-- **Prep**: Instructor-generated random sample of 200k complaints from 15 agencies
-- **Files**: 
-  - `raw/complaints.csv` (200k rows, main requests table)
-  - `raw/agencies.csv` (unique agencies lookup table)
+## Workflow
 
-## S3 Data Paths
-- **Bucket root:**  
-  s3://cmse492-laurycor-nyc311
+1. Data Storage (Amazon S3)
+- Uploaded raw NYC 311 datasets to an S3 bucket
 
-- **Complaints data:**  
-  s3://cmse492-laurycor-nyc311/raw/complaints.csv
+2. Data Querying (AWS Athena)
+- Created external tables and queried data using SQL
 
-- **Agencies data:**  
-  s3://cmse492-laurycor-nyc311/raw/agencies.csv
+3. Data Preparation
+- Cleaned and filtered data to create a modeling dataset
 
-## Project Structure
+4. Modeling (AWS SageMaker)
+- Used SageMaker to train a basic machine learning model
 
-aws-nyc311-laurycor/  
-├── README.md  
-├── DATA_DICTIONARY.md  
-├── raw/  
-│   ├── complaints.csv  
-│   └── agencies.csv  
-├── sql/  
-├── notes/  
-└── reports/  
+## Tools Used
+- Amazon S3  
+- AWS Athena  
+- AWS SageMaker  
+- SQL  
+- Python  
 
-## Data Summary
-See `DATA_DICTIONARY.md` for full schema.
+## Repository Structure
+data/
+sql/
+notebooks/
 
-**Key relationships:**  
-Join `complaints.agency = agencies.agency`
-
-**Stakeholder questions:**  
-- Analysis of NYC 311 service requests to identify patterns in complaint types by agency and borough.
-
-## Assumptions and Known Issues
-- Empty `closed_date` = open/unresolved requests  
-- Some `incident_zip` values are 0 or missing  
-- String dates need parsing in Athena/SQL  
-- Data represents a sample and may not reflect the full population  
+## Key Takeaways
+- Learned how to use cloud tools for large-scale data processing  
+- Used SQL in Athena to analyze data without downloading it  
+- Built a simple end-to-end cloud data workflow  
